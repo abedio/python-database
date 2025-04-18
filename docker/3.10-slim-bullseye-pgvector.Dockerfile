@@ -7,7 +7,10 @@ RUN --mount=type=bind,source=fs,target=/mnt apt-get update && apt-get install -y
     libnss3-dev libssl-dev libreadline-dev libffi-dev \
     libsqlite3-dev libbz2-dev \
     supervisor \
-    && rm -rf /var/lib/apt/lists/*
+    cp -Rv /mnt/* / && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.10 from source
 RUN curl -O https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz && \
