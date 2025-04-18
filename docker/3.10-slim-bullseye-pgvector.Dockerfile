@@ -33,5 +33,7 @@ RUN curl -O https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tgz && \
 RUN ln -s /usr/local/bin/python3.10 /usr/local/bin/python && \
     ln -s /usr/local/bin/pip3.10 /usr/local/bin/pip
 
+RUN pip install --no-cache-dir --upgrade  pip setuptools wheel
+
 # Start supervisord
 CMD ["/usr/bin/supervisord"]
